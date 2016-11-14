@@ -24,25 +24,25 @@ component {
     try {
       var args = deserializeJSON(apiArguments);
     } catch (any e) {
-      return { "success": false, "message": "Invalid apiArguments" };
+      return { "success" = false, "message" = "Invalid apiArguments" };
     }
 
     try {
       var cmp = _createAPIComponent(apiComponent);
     } catch (any e) {
-      return { "success": false, "message": "Invalid component" };
+      return { "success" = false, "message" = "Invalid component" };
     }
 
     try {
       var res = evaluate('cmp.#apiMethod#(argumentCollection = args)');
     } catch (any e) {
-      return { "success": false, "message": e.message };
+      return { "success" = false, "message" = e.message };
     }
 
     if (!isNull(res)) {
-      return { "success": true, "res": res };
+      return { "success" = true, "res" = res };
     } else {
-      return { "success": true };
+      return { "success" = true };
     }
   }
 
